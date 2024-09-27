@@ -1,13 +1,17 @@
-test.js
+const { sum, fromEuroToDollar, fromDollarToYen, fromYenToPound } = require('./app');
 
-// Import the function sum from the app.js file
-const { sum } = require('./app.js');
+test('sumar 7 + 3 debería dar 10', () => {
+    expect(sum(7, 3)).toBe(10);
+});
 
-// Start your first test
-test('adds 14 + 9 to equal 23', () => {
-    // Inside the test we call our sum function with 2 numbers
-    let total = sum(14, 9);
+test('convierte 100 euros a dólares', () => {
+    expect(fromEuroToDollar(100)).toBeCloseTo(107); // Tasa de conversión de 1.07
+});
 
-    // We expect the sum of those 2 numbers to be 23
-    expect(total).toBe(23);
+test('convierte 100 dólares a yenes', () => {
+    expect(fromDollarToYen(100)).toBeCloseTo(14626.17); // Conversión dólar a yen
+});
+
+test('convierte 10,000 yenes a libras', () => {
+    expect(fromYenToPound(10000)).toBeCloseTo(55.61, 1); // Cambia la precisión a 1 decimal
 });
